@@ -181,8 +181,41 @@
         
         .hero-content {
             position: relative;
+            
             z-index: 1;
             animation: fadeInUp 1s ease-out;
+        }
+
+        .hero-content-space {
+            position: relative;
+            padding: 60px 40px;
+            animation: fadeInUp 1s ease-out;     
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            border-radius: 20px;
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6), 0 0 40px rgba(139, 92, 246, 0.2);
+            backdrop-filter: blur(10px);
+            max-width: 800px;
+            margin: 0 auto;
+            z-index: 1;
+        }
+        
+        .hero-content-space::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.5), rgba(167, 139, 250, 0.3));
+            border-radius: 20px;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .hero-content-space:hover::before {
+            opacity: 1;
         }
         
         @keyframes fadeInUp {
@@ -521,7 +554,7 @@
     
     <!-- Navigation -->
     <nav id="navbar">
-        <div class="container jwtspace">
+        <div class="container">
             <div class="logo">Dylan Manitta</div>
             <ul>
                 <li><a href="#home">Home</a></li>
@@ -534,9 +567,9 @@
     </nav>
     
     <!-- Hero Section -->
-    <section class="hero" id="home">
+    <section class="hero jwtspace" id="home">
         <div class="container">
-            <div class="hero-content">
+            <div class="hero-content-space">
                 <h1>Dylan Manitta</h1>
                 <p>Freelance IT Professional</p>
                 <p class="tagline">Software Developer • System Administrator • PCI Compliance</p>

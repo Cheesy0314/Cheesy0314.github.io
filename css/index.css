@@ -25,7 +25,10 @@ nav {
     background: rgba(10, 14, 39, 0.95);
     backdrop-filter: blur(10px);
     z-index: 1000;
-    padding: 15px 0;
+    padding: 0;
+    min-height: 56px;
+    display: flex;
+    align-items: center;
     transition: all 0.3s ease;
     border-bottom: 1px solid rgba(139, 92, 246, 0.2);
 }
@@ -36,25 +39,67 @@ nav.scrolled {
 }
 
 nav .container {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: minmax(min-content, 1fr) auto minmax(0, 1fr);
     align-items: center;
+    gap: 0;
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
+    min-height: 56px;
+}
+
+/* Logo all the way left; center column = ul; right = spacer. Left column is at least logo width. */
+nav .nav-left {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    min-width: 0;
+    position: relative;
+    z-index: 2;
+}
+
+nav .nav-right {
+    min-width: 0;
 }
 
 nav .logo {
-    font-size: 1.5em;
-    font-weight: 700;
-    color: #8b5cf6;
-    text-shadow: 0 0 10px rgba(139, 92, 246, 0.5);
+    flex: 0 0 auto;
+    display: flex;
+    align-items: stretch;
+    text-decoration: none;
+    line-height: 1;
+    height: 56px;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+nav .logo img {
+    height: 100%;
+    width: auto;
+    max-height: 56px;
+    object-fit: contain;
+    object-position: left center;
+    display: block;
+    border-radius: 12px;
+    /* Fade left and right edges into transparent so nav shows through */
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+    -webkit-mask-position: center;
+    mask-position: center;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
 }
 
 nav ul {
     display: flex;
+    justify-content: center;
     list-style: none;
     gap: 30px;
+    margin: 0;
+    padding: 0;
 }
 
 nav a {
